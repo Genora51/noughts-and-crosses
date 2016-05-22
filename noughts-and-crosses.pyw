@@ -1,3 +1,4 @@
+#SETUP
 from tkinter import *
 wins = ["000102","101112","202122","001020","011121","021222","001122","021120"]
 n = "x"
@@ -9,6 +10,7 @@ fr.pack()
 w = Label(fr, text="Noughts And Crosses")
 btn = []
 num = 1
+#important functions
 def shift(seq):
     l = seq[1:]
     l.append(seq[0])
@@ -19,7 +21,6 @@ def pg():
     playag = bt(row_frame, text="Play Again")
     playag.config(command=playag.play)
     playag.pack()
-
 def playagain():
     global fr
     global won
@@ -48,7 +49,6 @@ def playagain():
         btn[i].pack(side="left")
 
 #AI CLASS
-
 class AI:
     def checkNear(self):
         global btn
@@ -105,10 +105,10 @@ class AI:
             o = self.order()
             ms.append(o)
             return next(x for x in ms if x != None)
-            
-
 #END AI CLASS
-ai = AI()
+
+ai = AI() #defining game AI for 1-player game
+#switch functions
 def switch1():
     global ai
     global n
@@ -140,6 +140,7 @@ def switch2():
             i.config(command=i.x)
         n = "x"
 switch = switch2
+#more functions
 def checkEqual(iterator):
     try:
         return all('disabled' == rest.cget('state') for rest in iterator)
@@ -166,6 +167,7 @@ def chw():
     if checkEqual(btn) and not(won):
         w.config(text="Noughts and Crosses - It's a draw!")
         pg()
+#modified button class
 class bt(Button):
     def p1(self):
         global switch
@@ -189,11 +191,12 @@ class bt(Button):
         self.config(text="O",state="disabled")
         switch()
         chw()
-
+#setup window
 BoardValue = ["-","-","-","-","-","-","-","-","-"]
 window.title("Noughts And Crosses")
 window.geometry("200x100")
 w.pack()
+#setup gamemode choice
 play1 = bt(fr,text="1-player")
 play2 = bt(fr,text="2-player")
 play1.config(command=play1.p1)
