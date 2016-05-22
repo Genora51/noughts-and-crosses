@@ -97,7 +97,12 @@ class AI:
                 if btn[b[0]].gt() == btn[b[1]].gt() and btn[b[0]].gt() == "X":
                     if btn[(int(a[0])*3) + int(a[1])].cget('state') == 'normal':
                         return a
-        
+
+    def miderr(self):
+        global btn
+        if btn[4].gt() == btn[8].gt() and btn[4].gt() == "X":
+            return '02'
+    
     def move(self,n):
         global btn
         if n == 1:
@@ -106,6 +111,9 @@ class AI:
             ms = []
             c = self.checkNear()
             ms.append(c)
+            if n == 2:
+                m = self.miderr()
+                ms.append(m)
             if n <= 3:
                 d = self.diag()
                 ms.append(d)
