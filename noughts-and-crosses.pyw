@@ -11,6 +11,13 @@ w = Label(fr, text="Noughts And Crosses")
 btn = []
 num = 1
 #important functions
+def centre(win):
+    win.update_idletasks()
+    width = win.winfo_width()
+    height = win.winfo_height()
+    x = (win.winfo_screenwidth() // 2) - (width // 2)
+    y = (win.winfo_screenheight() // 2) - (height*2)
+    win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 def shift(seq):
     l = seq[1:]
     l.append(seq[0])
@@ -195,6 +202,7 @@ class bt(Button):
 BoardValue = ["-","-","-","-","-","-","-","-","-"]
 window.title("Noughts And Crosses")
 window.geometry("200x100")
+centre(window)
 w.pack()
 #setup gamemode choice
 play1 = bt(fr,text="1-player")
