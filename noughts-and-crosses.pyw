@@ -57,7 +57,7 @@ def playagain():
 
 #AI CLASS
 class AI:
-    def checkNear(self):
+    def checkNear(self,let):
         global btn
         global wins
         for j in wins:
@@ -66,7 +66,7 @@ class AI:
             n3 = (int(j[4])*3) + int(j[5])
             btns = [btn[n1],btn[n2],btn[n3]]
             for i in range(3):
-                if (btns[0].gt() == btns[1].gt()) and (btns[2].gt() == "-") and (btns[1].gt() != "-"):
+                if (btns[0].gt() == btns[1].gt()) and (btns[2].gt() == "-") and (btns[1].gt() == let):
                     return btns[2].nams
                     break
                 btns = shift(btns)
@@ -109,8 +109,10 @@ class AI:
             return self.firstmove()
         else:
             ms = []
-            c = self.checkNear()
-            ms.append(c)
+            co = self.checkNear("O")
+            ms.append(co)
+            cx = self.checkNear("X")
+            ms.append(cx)
             if n == 2:
                 m = self.miderr()
                 ms.append(m)
