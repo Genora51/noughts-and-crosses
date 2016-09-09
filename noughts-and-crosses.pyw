@@ -212,6 +212,7 @@ class bt(Button):
 BoardValue = ["-","-","-","-","-","-","-","-","-"]
 window.title("Noughts And Crosses")
 window.geometry("200x100")
+window.wm_iconbitmap("tic-tac-toe.ico")
 centre(window)
 w.pack()
 #setup gamemode choice
