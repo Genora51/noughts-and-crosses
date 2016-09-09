@@ -52,6 +52,7 @@ def playagain():
             row_frame.pack(side="top")
         btn.append(bt(row_frame, text=b, relief=GROOVE, width=4,height=2))
         btn[i].config(command=btn[i].x)
+        btn[i].config(disabledforeground="black")
         btn[i].nam(str(i//3)+str(i%3))
         btn[i].pack(side="left")
 
